@@ -37,7 +37,9 @@ var sprite = require('sprity');
 sprite.create({
   ...
   style: 'style.less',
-  processor: 'less'
+  processor: 'less',
+  prefix: 'yourprefix',
+  split: true,
   ...
 }, function () {
   console.log('done');
@@ -51,12 +53,12 @@ sprite.create({
 
 // camera icon (camera.png in src directory)
 .icon-camera {
-  .sprite(@camera);
+  .yourprefix-sprite(@camera);
 }
 
 // cart icon (cart.png in src directory)
 .icon-cart {
-  .sprite(@cart);
+  .yourprefix-sprite(@cart);
 }
 ```
 

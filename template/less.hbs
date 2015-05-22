@@ -4,6 +4,7 @@
   {{/each}}
 {{/each}}
 
+.sprites-scope() {
 .sprite-width(@sprite) {
   width: extract(@sprite, 3);
 }
@@ -26,6 +27,7 @@
   .sprite-width(@sprite);
   .sprite-height(@sprite);
 }
+}
 
 {{#each layouts}}
   {{#each sprites}}
@@ -33,11 +35,14 @@
     {{#if dpi}}
     @media (-webkit-min-device-pixel-ratio: {{ratio}}), (min-resolution: {{dpi}}dpi) {
     {{/if}}
-    .{{cssesc ../classname}} {
+    .{{cssesc ../classname}}(@sprite, @display: block) {
       background-image: url('{{escimage url}}');
       {{#if dpi}}
       background-size: {{width}}px {{height}}px;
       {{/if}}
+
+      .sprites-scope();
+      .sprite(@sprite, @display);
     }
     {{#if dpi}}
     }
